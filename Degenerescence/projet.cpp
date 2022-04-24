@@ -1,4 +1,5 @@
 // g++ -Wall projet.cpp -o projet
+// time ./projet
 
 #include <iostream>
 #include <vector>
@@ -295,7 +296,7 @@ int degenerescenceByMatulaAndBeck(){
 
 int main()
 {
-    construction("inf-USAir97.mtx");
+    construction("Files/inf-USAir97.mtx");
     int d;
     //showCode();
     //showVoisinage();
