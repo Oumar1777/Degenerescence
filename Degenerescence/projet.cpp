@@ -42,14 +42,15 @@ void construction(string file){
     // Ouverture de file en lecture
     ifstream fichier(file, ios::in);
 
-    if(!fichier)
+    if(!fichier){
         cerr << "Impossible d'ouvrir le fichier " << file <<" !!" << endl;
+        exit (EXIT_FAILURE);
+    }
     else{
         cout << "Fichier " << file << " ouvert !!" << endl;
 
         // Lecture du fichier ligne par ligne
         int pos, val = 0, s1, s2;
-        string tmp;
         while (getline(fichier, ligne))
         {
             if(ligne.find('#') == string::npos && ligne.find('%') == string::npos && ligne != ""){
@@ -66,7 +67,6 @@ void construction(string file){
                     voisinage.push_back(v);
                 }
                    
-
                 s1 = code.at(val);
 
                 val = stoi(ligne.substr(pos, ligne.size()-pos));
@@ -223,7 +223,7 @@ bool isEmpty(vector<int> vec){
     return true;
 }
 
-int  firstNotMarqued(vector<int> vec){
+int firstNotMarqued(vector<int> vec){
     for(int i = 0; i < (int)vec.size(); i++)
         if(!marqued[vec[i]]) return vec[i];
     return -1;
@@ -254,23 +254,11 @@ int degenerescenceByMatulaAndBeck(){
         // Parcours jusqu'à trouver un D[i] non vide
         if(i != 0) i--;
         //cout << "i = " << i << endl;
-        while (D[i].empty() || ((s = firstNotMarqued(D[i])) == -1)){
-        //while (D[i].empty() || isEmpty(D[i])){
-            //cout << "D[" << i << "] : vide" << endl;
+        while (D[i].empty() || ((s = firstNotMarqued(D[i])) == -1))
             i++;
-        }
         // K max entre i et lui-même
         k = max(k,i);
-    /*
-        // Ajout du premier sommet de D[i] non marqué dans L et suppression dans D
-        s = 0;
-        while(marqued[D[i][s]]) {
-            //cout << "s = " << s << " " << D[i][s] << " marqué" << endl;
-            s++;
-        }
-           
-        s = D[i][s];
-    //*/
+    
         L.insert(L.begin(),s);
         marqued[s] =  true;
     
@@ -296,7 +284,7 @@ int degenerescenceByMatulaAndBeck(){
 
 int main()
 {
-    construction("Files/inf-USAir97.mtx");
+    construction("Files/facebook.txt");
     int d;
     //showCode();
     //showVoisinage();
