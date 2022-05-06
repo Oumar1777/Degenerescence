@@ -284,19 +284,22 @@ int degenerescenceByMatulaAndBeck(){
 
 int main()
 {
-    construction("Files/facebook.txt");
+    construction("Files/test.txt");
     int d;
     //showCode();
     //showVoisinage();
     d = degenerescence();
     cout << "Degenerence : " << d << endl;
+    //cout << "Tableau des numéros de centre :" << endl;
     //showVect(numCentre);
     
     initTabs();
 
     d = degenerescenceByMatulaAndBeck();
-    cout << "Degenerence by Matula & Beck : " << d << endl;
-    //showVect(numCentre);
+    cout << "\nDegenerence by Matula & Beck : " << d << endl;
+    //cout << "Tableau des numéros de centre :" << endl;
+    // showVect(numCentre);
+    //cout << "Liste de sortie L :" << endl;
     //showVect(L);
 
     return 0;   
